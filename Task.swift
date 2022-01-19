@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Task:Object {
+class Task: Object {
     //管理用　ID。プライマリキー
     @objc dynamic var id = 0
     
@@ -19,6 +19,9 @@ class Task:Object {
     
     //日時
     @objc dynamic var date = Date()
+    
+    //カテゴリ(課題追加)
+    @objc dynamic var category = ""
     
     // id をプライマリキーとして設定
     override static func primaryKey() -> String? {
