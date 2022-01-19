@@ -10,7 +10,7 @@ import RealmSwift
 import UserNotifications
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    @IBOutlet weak var tableView: UITableView!    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchField: UISearchBar! //add1.12
        
     //Realmインスタンスを取得する
@@ -26,12 +26,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         searchField.delegate = self//add1.12
-        
-        searchField.placeholder = "カテゴリーで抽出"
-        
-        //タイトルを取得して再設定する。
-        self.title = self.title! + ""//1.19add
-        
+        searchField.placeholder = "カテゴリーで抽出"//1.16add
+        self.title = self.title! + ""//1.19add(タイトルを取得して再設定)
     }
     
     // データの数（＝セルの数）を返すメソッド(tableView(_:numberOfRowsInSection:)  UITableViewDataSourceプロトコルのメソッド。データの数を返す)
@@ -45,13 +41,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 再利用可能な cell を得る
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell",for: indexPath)
         
-        //Cellに値を設定する
+        //Cellに値を設定/textLabel?にtask.titleを代入
         let task = taskArray[indexPath.row]
         cell.textLabel?.text = task.title
         
+//      Cellに値を設定/DateFormatter:Date構造体←→テキストの相互変換
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         
+//      Cellに値を設定/detailTextLabel?にdateString(from: task.date)を代入
         let dateString:String = formatter.string(from: task.date)
         cell.detailTextLabel?.text = dateString
         
