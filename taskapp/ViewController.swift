@@ -10,14 +10,9 @@ import RealmSwift
 import UserNotifications
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var tableView: UITableView!    
     @IBOutlet weak var searchField: UISearchBar! //add1.12
-    
-    // フォント種をTime New Roman、サイズを10に指定
-    
-    
-    
+       
     //Realmインスタンスを取得する
     let realm = try! Realm()
     
@@ -37,14 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //タイトルを取得して再設定する。
         self.title = self.title! + ""//1.19add
         
-        
-        
-        
     }
-    
-    
-    
-    
     
     // データの数（＝セルの数）を返すメソッド(tableView(_:numberOfRowsInSection:)  UITableViewDataSourceプロトコルのメソッド。データの数を返す)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
